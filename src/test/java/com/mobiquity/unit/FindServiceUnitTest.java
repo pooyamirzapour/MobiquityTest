@@ -17,10 +17,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FindServiceUnitTest {
 
+    //For calling private method
+    private Object getInvoke(Line input,String methodName) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Method method = FindServiceImpl.class.getDeclaredMethod(methodName, Line.class);
+        method.setAccessible(true);
+        return method.invoke(FindServiceImpl.INSTANCE, input);
+    }
+
     @Test
     void testFindServiceValidInput() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
-        Item item1 = Item.builder().index(1).weight(BigDecimal.valueOf(53.38)).cost(45).build();
-        Item item2 = Item.builder().index(2).weight(BigDecimal.valueOf(88.62)).cost(98).build();
+        Item item1 = Item.builder().index(1).weight(BigDecimal.valueOf(21)).cost(34).build();
+        Item item2 = Item.builder().index(2).weight(BigDecimal.valueOf(82)).cost(82).build();
         Line line = Line.builder().capacity(BigDecimal.valueOf(81)).items(Arrays.asList(item1, item2)).build();
 
         Result result =(Result) getInvoke(line,"findAnswer");
@@ -30,10 +37,43 @@ public class FindServiceUnitTest {
         assertEquals(item1, resultItems.get(0));
     }
 
-    //For calling private method
-    private Object getInvoke(Line input,String methodName) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        Method method = FindServiceImpl.class.getDeclaredMethod(methodName, Line.class);
-        method.setAccessible(true);
-        return method.invoke(FindServiceImpl.INSTANCE, input);
+    @Test
+    void testFindServiceEqualItemsCost() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        Item item1 = Item.builder().index(1).weight(BigDecimal.valueOf(55.55)).cost(40).build();
+        Item item2 = Item.builder().index(2).weight(BigDecimal.valueOf(66.66)).cost(40).build();
+        Line line = Line.builder().capacity(BigDecimal.valueOf(81)).items(Arrays.asList(item1, item2)).build();
+
+        Result result =(Result) getInvoke(line,"findAnswer");
+        List<Item> resultItems = result.items();
+
+        assertEquals(1, resultItems.size());
+        assertEquals(item1, resultItems.get(0));
     }
+
+    @Test
+    void testFindServiceEqualItemsWeight() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        Item item1 = Item.builder().index(1).weight(BigDecimal.valueOf(20.12)).cost(41).build();
+        Item item2 = Item.builder().index(2).weight(BigDecimal.valueOf(20.12)).cost(40).build();
+        Line line = Line.builder().capacity(BigDecimal.valueOf(81)).items(Arrays.asList(item1, item2)).build();
+
+        Result result =(Result) getInvoke(line,"findAnswer");
+        List<Item> resultItems = result.items();
+
+        assertEquals(2, resultItems.size());
+        assertEquals(item1, resultItems.get(0));
+        assertEquals(item2, resultItems.get(1));
+    }
+
+    @Test
+    void testFindServiceNotFound() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        Item item1 = Item.builder().index(1).weight(BigDecimal.valueOf(81.12)).cost(20).build();
+        Item item2 = Item.builder().index(2).weight(BigDecimal.valueOf(82.12)).cost(30).build();
+        Line line = Line.builder().capacity(BigDecimal.valueOf(81)).items(Arrays.asList(item1, item2)).build();
+        Result result =(Result) getInvoke(line,"findAnswer");
+        List<Item> resultItems = result.items();
+
+        assertEquals(0, resultItems.size());
+    }
+
+
 }

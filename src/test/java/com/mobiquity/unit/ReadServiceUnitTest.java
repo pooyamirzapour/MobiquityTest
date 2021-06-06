@@ -29,6 +29,15 @@ import static org.mockito.ArgumentMatchers.any;
 // With the help of reflection private methods should be tested
 public class ReadServiceUnitTest {
 
+
+
+
+    //For calling private method
+    private Object getInvoke(String input,String methodName) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Method method = ReadServiceImpl.class.getDeclaredMethod(methodName, String.class);
+        method.setAccessible(true);
+        return method.invoke(ReadServiceImpl.INSTANCE, input);
+    }
     private static MockedStatic<Files> mockedSettings;
 
 
@@ -51,12 +60,7 @@ public class ReadServiceUnitTest {
 
     }
 
-    //For calling private method
-    private Object getInvoke(String input,String methodName) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        Method method = ReadServiceImpl.class.getDeclaredMethod(methodName, String.class);
-        method.setAccessible(true);
-        return method.invoke(ReadServiceImpl.INSTANCE, input);
-    }
+
 
     @Test
     void testMakeItemEmpty() throws NoSuchMethodException {

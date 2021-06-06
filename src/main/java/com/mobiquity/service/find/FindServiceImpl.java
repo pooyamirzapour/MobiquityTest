@@ -15,11 +15,11 @@ public enum FindServiceImpl implements FindService {
 
     @Override
     public String find(Line line) {
-        Result line1 = findAnswer(line);
+        Result line1 = process(line);
         return line1.toString();
     }
 
-    Result findAnswer(Line line) {
+    Result process(Line line) {
         final BigDecimal capacity = line.getCapacity();
         final List<Item> items = line.getItems();
         final int itemsSize = items.size();
@@ -39,8 +39,8 @@ public enum FindServiceImpl implements FindService {
                 .items(previousItems)
                 .build();
 
-        final Result previousResult = findAnswer(currentLine);
-        final Result currentResult = findAnswer(remainedLine).clone().addItem(currentItem);
+        final Result previousResult = process(currentLine);
+        final Result currentResult = process(remainedLine).clone().addItem(currentItem);
         return max(previousResult, currentResult, capacity);
     }
 
