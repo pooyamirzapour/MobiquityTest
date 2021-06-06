@@ -30,7 +30,7 @@ public class FindServiceUnitTest {
         Item item2 = Item.builder().index(2).weight(BigDecimal.valueOf(82)).cost(82).build();
         Line line = Line.builder().capacity(BigDecimal.valueOf(81)).items(Arrays.asList(item1, item2)).build();
 
-        Result result =(Result) getInvoke(line,"findAnswer");
+        Result result =(Result) getInvoke(line,"process");
         List<Item> resultItems = result.items();
 
         assertEquals(1, resultItems.size());
@@ -43,7 +43,7 @@ public class FindServiceUnitTest {
         Item item2 = Item.builder().index(2).weight(BigDecimal.valueOf(66.66)).cost(40).build();
         Line line = Line.builder().capacity(BigDecimal.valueOf(81)).items(Arrays.asList(item1, item2)).build();
 
-        Result result =(Result) getInvoke(line,"findAnswer");
+        Result result =(Result) getInvoke(line,"process");
         List<Item> resultItems = result.items();
 
         assertEquals(1, resultItems.size());
@@ -56,7 +56,7 @@ public class FindServiceUnitTest {
         Item item2 = Item.builder().index(2).weight(BigDecimal.valueOf(20.12)).cost(40).build();
         Line line = Line.builder().capacity(BigDecimal.valueOf(81)).items(Arrays.asList(item1, item2)).build();
 
-        Result result =(Result) getInvoke(line,"findAnswer");
+        Result result =(Result) getInvoke(line,"process");
         List<Item> resultItems = result.items();
 
         assertEquals(2, resultItems.size());
@@ -69,7 +69,7 @@ public class FindServiceUnitTest {
         Item item1 = Item.builder().index(1).weight(BigDecimal.valueOf(81.12)).cost(20).build();
         Item item2 = Item.builder().index(2).weight(BigDecimal.valueOf(82.12)).cost(30).build();
         Line line = Line.builder().capacity(BigDecimal.valueOf(81)).items(Arrays.asList(item1, item2)).build();
-        Result result =(Result) getInvoke(line,"findAnswer");
+        Result result =(Result) getInvoke(line,"process");
         List<Item> resultItems = result.items();
 
         assertEquals(0, resultItems.size());

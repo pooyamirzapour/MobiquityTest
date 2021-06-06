@@ -22,7 +22,7 @@ For making and converting the input to these models, it has been used some usefu
 ### Concerns
 The main concerns are : writing clean code based on SOLID principles with the function testable.
 For achieving that the services are defined in different interfaces, and interface and implementation have been separated.
-With the help of Reflection the private methods have been tested, and unit tests and integration tests have been done.
+With the help of Reflection the private methods have been tested, and with the help of JUnit 5, unit tests and integration tests have been done.
 
 ### Design Pattern
 For making services Singleton, with the help of Enum instance the services are Singleton.

@@ -19,21 +19,19 @@ import java.util.stream.Stream;
 /**
  * This class is the start point of the application, and will process the passed parameters.
  */
-//@Slf4j
+@Slf4j
 public class Main {
 
     public static void main(String[] args) {
         try {
-            Stream<Line> read = ReadServiceImpl.INSTANCE.read("src/test/resources/example_input");
-            Stream<String> stringStream = read.map(FindServiceImpl.INSTANCE::find);
-            stringStream.forEach(System.out::println);
             if (args.length == 0) {
                 throw new APIException("The file path should be sent.");
             }
             final String pack = Packer.pack(args[0]);
-            //log.info(String.format("Output:\r\n%s", pack));
+            log.info(String.format("Output:\r\n%s", pack));
         } catch (Exception e) {
-            System.out.println(e.getMessage()); //log.error(Optional.of(e.getMessage()).orElse("Error occurred in the packing."));
+            System.out.println(e.getMessage());
+            log.error(Optional.of(e.getMessage()).orElse("Error occurred in the packing."));
         }
     }
 
