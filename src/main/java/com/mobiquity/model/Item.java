@@ -18,7 +18,7 @@ public class Item {
     private Integer cost;
 
     @Builder
-    public Item(Integer index, BigDecimal weight, Integer cost) {
+    public Item(Integer index, BigDecimal weight, int cost) {
         this.index = index;
         this.cost = cost;
         this.weight = Optional.of(weight)
