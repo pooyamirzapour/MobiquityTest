@@ -25,6 +25,6 @@ public class Line {
         this.items = items;
         this.capacity = Optional.of(capacity)
                 .filter(w -> MAX_CAPACITY.compareTo(w) >= 0)
-                .orElseThrow(() -> new IllegalArgumentException("max capacity package is 100."));
+                .orElseThrow(() -> new IllegalArgumentException("Max capacity package is 100."));
     }
 }

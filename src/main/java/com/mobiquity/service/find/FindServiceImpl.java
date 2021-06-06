@@ -45,10 +45,10 @@ public enum FindServiceImpl implements FindService {
     }
 
     private Result max(Result first, Result second, BigDecimal weightLimit) {
-        if (second.weight().compareTo(weightLimit) > 0) {
-            return first.weight().compareTo(weightLimit) > 0 ? Result.empty() : first;
+        if (second.getWeight().compareTo(weightLimit) > 0) {
+            return first.getWeight().compareTo(weightLimit) > 0 ? Result.empty() : first;
         }
-        return (first.weight().compareTo(weightLimit) > 0) || (first.compareTo(second) < 0) ? second : first;
+        return (first.getWeight().compareTo(weightLimit) > 0) || (first.compareTo(second) < 0) ? second : first;
     }
 
 

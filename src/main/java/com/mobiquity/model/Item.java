@@ -23,6 +23,6 @@ public class Item {
         this.cost = cost;
         this.weight = Optional.of(weight)
                 .filter(w -> MAX_WEIGHT.compareTo(w) >= 0)
-                .orElseThrow(() -> new IllegalArgumentException(String.format("Index '%d':The Max wight is 100", index)));
+                .orElseThrow(() -> new IllegalArgumentException(String.format("Index '%d':the max wight is 100", index)));
     }
 }

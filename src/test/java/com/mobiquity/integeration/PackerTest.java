@@ -19,7 +19,6 @@ public class PackerTest {
     public void testPackerEmptyLines() throws APIException {
         String pack = Packer.pack("src/test/resources/empty-lines.txt");
         assertEquals("4\n-\n2, 7\n8, 9", pack);
-
     }
 
     @Test
@@ -49,7 +48,6 @@ public class PackerTest {
 
     @Test
     public void testBadItemWight()  {
-        // Execution phase -------------------------------------------------------------
         assertThrows(APIException.class,()-> Packer.pack("src/test/resources/sample-files/bad-item-wight.txt"));
     }
 }

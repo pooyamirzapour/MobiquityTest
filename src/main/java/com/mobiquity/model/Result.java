@@ -1,17 +1,15 @@
 package com.mobiquity.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.experimental.Accessors;
+import lombok.Builder;
+import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 
-@Getter
-@Accessors(fluent = true)
-@EqualsAndHashCode
+@Data
+@Builder
 public class Result implements Cloneable, Comparable<Result> {
 
     private static final Result EMPTY = new Result();
@@ -21,6 +19,12 @@ public class Result implements Cloneable, Comparable<Result> {
     private List<Item> items = new ArrayList<>();
 
     private Result() {
+    }
+
+    public Result(BigDecimal weight, Integer cost, List<Item> items) {
+        this.weight = weight;
+        this.cost = cost;
+        this.items = items;
     }
 
     public static Result empty() {
