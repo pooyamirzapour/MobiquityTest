@@ -9,6 +9,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public enum ReadServiceImpl implements ReadService {
     @Override
     public  Stream<Line> read(String path) throws APIException {
         try {
-            return Files.lines(Paths.get(path))
+            return Files.lines(Paths.get(path), StandardCharsets.UTF_8)
                     .filter(StringUtils::isNotBlank)
                     .map(this::transformToLine);
         } catch (IOException e) {
