@@ -16,7 +16,7 @@ In this step the recursive method with the complexity of O(nw) finds the answers
 
 ### Data Structure
 There are three Models: Line,Item, and Result.
-For making and converting the input to these models, it has been used some useful structure like ***java.util.List*** and ***java.nio.file.Files***.
+For making and converting the input to these models, it has been used some useful structures like ***java.util.List*** and ***java.nio.file.Files***.
 
 
 ### Concerns
