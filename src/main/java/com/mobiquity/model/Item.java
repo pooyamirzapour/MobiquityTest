@@ -2,6 +2,8 @@ package com.mobiquity.model;
 
 import lombok.Builder;
 import lombok.Data;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -9,6 +11,7 @@ import java.util.Optional;
 @Data
 @Builder
 public class Item {
+    Logger logger = LoggerFactory.getLogger(Item.class);
 
     private static final BigDecimal MAX_WEIGHT = BigDecimal.valueOf(100);
 
@@ -23,6 +26,11 @@ public class Item {
         this.cost = cost;
         this.weight = Optional.of(weight)
                 .filter(w -> MAX_WEIGHT.compareTo(w) >= 0)
-                .orElseThrow(() -> new IllegalArgumentException(String.format("Index '%d':the max wight is 100", index)));
+                .orElseThrow(() ->
+                {
+                    String msg = String.format("Index '%d':the max wight is 100", index);
+                    logger.error(msg);
+                    return new IllegalArgumentException(msg);
+                });
     }
 }
