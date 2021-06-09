@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -174,7 +175,7 @@ public class ReadServiceUnitTest {
     @Test
     void testReadValidFormat() throws APIException, IOException {
         String line = "58 : (1,53.38,€45) (2,88.62,€98)";
-        Mockito.when(Files.lines(any())).thenReturn(Stream.of(line));
+        Mockito.when(Files.lines(any(), any())).thenReturn(Stream.of(line));
         Stream<Line> lineStream = ReadServiceImpl.INSTANCE.read("path");
         List<Line> collect = lineStream.collect(Collectors.toList());
         Line line1 = collect.get(0);
@@ -188,7 +189,7 @@ public class ReadServiceUnitTest {
     @Test
     void testReadInvalidFormat() throws IOException {
         String line = "fddfhdfh";
-        Mockito.when(Files.lines(any())).thenReturn(Stream.of(line));
+        Mockito.when(Files.lines(any(),any())).thenReturn(Stream.of(line));
         assertThrows(LineFormatException.class, () -> ReadServiceImpl.INSTANCE.read("path").collect(Collectors.toList()));
     }
 

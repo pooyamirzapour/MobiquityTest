@@ -4,7 +4,7 @@ package com.mobiquity;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("The application start");
+        System.out.println("The application started");
     }
 
 }
