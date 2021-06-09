@@ -57,7 +57,6 @@ public class ReadServiceUnitTest {
         Object invoke = getInvoke(input,"makeItem");
         Item build = Item.builder().index(1).cost(45).weight(BigDecimal.valueOf(53.38)).build();
         assertEquals(build, invoke);
-
     }
 
 

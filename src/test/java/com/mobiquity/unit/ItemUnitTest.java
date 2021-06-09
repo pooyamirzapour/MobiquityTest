@@ -12,14 +12,13 @@ public class ItemUnitTest {
 
     @Test
     void testBuildItem() {
-        Item.ItemBuilder builder = Item.builder().index(1).cost(20).weight(BigDecimal.valueOf(80));
-        Item result = builder.build();
+        Item result = Item.builder().index(1).cost(20).weight(BigDecimal.valueOf(80)).build();
         assertNotNull(result);
     }
 
     @Test()
     public void testMaxItemWeight() {
-            Item.ItemBuilder builder = Item.builder().index(1).cost(30).weight(BigDecimal.valueOf(101));
+        Item.ItemBuilder builder = Item.builder().index(1).cost(30).weight(BigDecimal.valueOf(101));
         assertThrows(IllegalArgumentException.class, () -> builder.build());
 
     }

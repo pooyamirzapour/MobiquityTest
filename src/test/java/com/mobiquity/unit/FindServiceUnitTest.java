@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FindServiceUnitTest {
 
-    //For calling private method
+    //For calling the private methods
     private Object getInvoke(Line input, String methodName) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         Method method = FindServiceImpl.class.getDeclaredMethod(methodName, Line.class);
         method.setAccessible(true);
