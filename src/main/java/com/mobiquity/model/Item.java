@@ -11,7 +11,7 @@ import java.util.Optional;
 @Data
 @Builder
 public class Item {
-    Logger logger = LoggerFactory.getLogger(Item.class);
+  private static   Logger logger = LoggerFactory.getLogger(Item.class);
 
     private static final BigDecimal MAX_WEIGHT = BigDecimal.valueOf(100);
 

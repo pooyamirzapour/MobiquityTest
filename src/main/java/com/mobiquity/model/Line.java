@@ -13,7 +13,7 @@ import java.util.Optional;
 @Builder
 public class Line {
 
-    Logger logger = LoggerFactory.getLogger(Line.class);
+   private static Logger logger = LoggerFactory.getLogger(Line.class);
 
     private BigDecimal capacity;
     private List<Item> items;
@@ -22,6 +22,8 @@ public class Line {
 
     public Line() {
     }
+
+
 
 
     @Builder
