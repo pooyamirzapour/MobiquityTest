@@ -23,7 +23,7 @@ public class PackerTest {
 
     @Test
     public void testPackerInvalidFileFormat() {
-       assertThrows(LineFormatException.class,()->Packer.pack("src/test/resources/bad-format.txt")) ;
+       assertThrows(APIException.class,()->Packer.pack("src/test/resources/bad-format.txt")) ;
     }
 
     @Test
@@ -38,7 +38,7 @@ public class PackerTest {
 
     @Test
     public void testPackerBadFormat()  {
-        assertThrows( LineFormatException.class,()-> Packer.pack("src/test/resources/bad-format.txt"));
+        assertThrows( APIException.class,()-> Packer.pack("src/test/resources/bad-format.txt"));
     }
 
     @Test

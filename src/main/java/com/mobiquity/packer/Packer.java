@@ -12,8 +12,15 @@ public class Packer {
     }
 
     public static String pack(String filePath) throws APIException {
-        return ReadServiceImpl.INSTANCE.read(filePath)
-                .map(FindServiceImpl.INSTANCE::find)
-                .collect(Collectors.joining("\n"));
+        try {
+            return ReadServiceImpl.INSTANCE.read(filePath)
+                    .map(FindServiceImpl.INSTANCE::find)
+                    .collect(Collectors.joining("\n"));
+        }
+        catch (Exception ex)
+        {
+            throw new APIException(ex.getMessage());
+        }
+
     }
 }
