@@ -1,4 +1,4 @@
-/target/
-/build.gradle
-/Packaging Challenge.pdf
-/implementation.iml
+target
+build.gradle
+.idea
+*.iml
